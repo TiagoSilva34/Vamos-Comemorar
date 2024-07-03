@@ -61,12 +61,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <MdPerson className="avatar-icon" />
         </span>
       </header>
-      <div className="container">
+      <div className="container-admin">
           <aside className={showMenu === true ? "aside open-menu" : "aside hide-menu"}>
             <nav className="aside-navbar">
               <ul>
                 <li style={{ backgroundColor: "#6561c1" }}>
-                  <MdDashboard />
+                  <MdDashboard className="dashboard-icon"/>
                   <Link
                     href="/admin"
                     className="dashboard-link"
@@ -78,7 +78,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <div>
                   <h2>Operacional</h2>
                   <li>
-                    <MdPerson3 />
+                    <MdPerson3 className="person-icon"/>
                     <Link
                       href="/admin/users"
                       onClick={() => setPathname("usuários")}
@@ -87,11 +87,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </Link>
                   </li>
                   <li>
-                    <MdFactory />
+                    <MdFactory className="factory-icon"/>
                     <Link href="/admin/factory">Empresa</Link>
                   </li>
                   <li>
-                    <MdSpaceBar />
+                    <MdSpaceBar className="commodies-icon"/>
                     <Link href="/admin/commodities">Commodities</Link>
                   </li>
                 </div>
@@ -99,73 +99,38 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <div>
                   <h2>Lugares</h2>
                   <li>
-                    <MdPlace />
+                    <MdPlace className="places-icon"/>
                     <Link href="/places">Lugares</Link>
                   </li>
                   <li>
-                    <MdTableBar />
+                    <MdTableBar className="tables-icon"/>
                     <Link href="/tables">Mesas</Link>
                   </li>
                   <li>
-                    <MdCardGiftcard />
+                    <MdCardGiftcard className="gift-icon"/>
                     <Link href="/gifts">Brindes</Link>
                   </li>
                   <li>
-                    <MdTimer />
+                    <MdTimer className="timer-icon"/>
                     <Link href="/days">Dias de funcionamento</Link>
-                  </li>
-                  <li>
-                    <MdEditCalendar />
-
-                    <Link href="/reservation">Reservas</Link>
                   </li>
                 </div>
               </ul>
             </nav>
           </aside>
-          <div className="grid-2">
+          <main className="main">
             <div>
-              <header className="admin-title">
+              <header className="header-admin-title">
                   <h1>{pathname}</h1>
               </header>
               <AdminTemplate>
                 {children}
               </AdminTemplate>
             </div>
-            <div className="quantity-container">
-            <div className="pagination">
-                  <nav>
-                    <MdArrowCircleLeft className="arrow-left"/>
-                    <ul>
-                      <li className="active">
-                        <span>1</span>
-                      </li>
-                      <li>
-                        <span>2</span>
-                      </li>
-                    </ul>
-                    <MdArrowCircleRight className="arrow-right"/>
-                  </nav>
-              </div>
-              <div className="filter-items-per-page">
-                <Select
-                  onChange={() => {}}
-                  value=""
-                  className="option-items-per-page"
-                  id="option-items-per-page"
-                >
-                  <option>10</option>
-                  <object>10</object>
-                  <object>20</object>
-                  <object>30</object>
-
-                </Select>
-              </div>
-            </div>
             <footer className="footer">
               <p>&copy;2024 - Vamos Comemorar</p>
             </footer>
-          </div>
+          </main>
       </div>
     </>
   );

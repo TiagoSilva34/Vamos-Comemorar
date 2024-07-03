@@ -16,7 +16,7 @@ export default function Dashboard() {
       </div>
       <div className="dashboard-item">
         <span className="place">
-          <MdPlace />
+          <MdPlace className="place-icon" />
         </span>
         <div>
           <span>{infos.places}</span>
@@ -26,7 +26,7 @@ export default function Dashboard() {
 
       <div className="dashboard-item">
         <span className="reservation">
-          <MdShoppingCart />
+          <MdShoppingCart className="reservation-icon"/>
         </span>
         <div>
           <span>{infos.reservation}</span>
@@ -36,7 +36,7 @@ export default function Dashboard() {
 
       <div className="dashboard-item">
         <span className="points">
-          <MdNumbers />
+          <MdNumbers className="points-icon"/>
         </span>
         <div>
           <span>{infos.places}</span>
