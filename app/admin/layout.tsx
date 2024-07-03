@@ -18,6 +18,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import AdminTemplate from "./template";
 import "./styles.scss";
+import Select from "../components/select/select";
+import { MdArrowCircleLeft, MdArrowCircleRight } from "react-icons/md"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -46,15 +48,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <>
       <header className="header-admin">
-        <div className="navbar-and-brand">
-          <Link className="brand" href="/">
-            <Image src={logBrand} alt="Logo banner" width={130} height={130} />
-          </Link>
+        <Link className="brand" href="/">
+          <Image src={logBrand} alt="Logo banner" width={130} height={130} />
+        </Link>
 
-          <span className="navbar" onClick={handleScreenSize}>
-            <MdMenu className="navbar-menu-icon" />
-          </span>
-        </div>
+        <span className="navbar" onClick={handleScreenSize}>
+          <MdMenu className="navbar-menu-icon" />
+        </span>
 
         <span className="header-avatar">
           {/* <Image src="" alt="Foto do administrador" width={100} height={100} /> */}
@@ -125,12 +125,42 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </aside>
           <div className="grid-2">
             <div>
-            <header className="admin-title">
-                <h1>{pathname}</h1>
-            </header>
-            <AdminTemplate>
-              {children}
-            </AdminTemplate>
+              <header className="admin-title">
+                  <h1>{pathname}</h1>
+              </header>
+              <AdminTemplate>
+                {children}
+              </AdminTemplate>
+            </div>
+            <div className="quantity-container">
+            <div className="pagination">
+                  <nav>
+                    <MdArrowCircleLeft className="arrow-left"/>
+                    <ul>
+                      <li className="active">
+                        <span>1</span>
+                      </li>
+                      <li>
+                        <span>2</span>
+                      </li>
+                    </ul>
+                    <MdArrowCircleRight className="arrow-right"/>
+                  </nav>
+              </div>
+              <div className="filter-items-per-page">
+                <Select
+                  onChange={() => {}}
+                  value=""
+                  className="option-items-per-page"
+                  id="option-items-per-page"
+                >
+                  <option>10</option>
+                  <object>10</object>
+                  <object>20</object>
+                  <object>30</object>
+
+                </Select>
+              </div>
             </div>
             <footer className="footer">
               <p>&copy;2024 - Vamos Comemorar</p>
