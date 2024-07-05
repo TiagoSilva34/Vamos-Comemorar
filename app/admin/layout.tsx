@@ -11,21 +11,19 @@ import {
   MdTableBar,
   MdPlace,
   MdTimer,
-  MdEditCalendar,
   MdCardGiftcard,
+  MdArrowCircleLeft, 
+  MdArrowCircleRight
 } from "react-icons/md";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import AdminTemplate from "./template";
 import "./styles.scss";
-import Select from "../components/select/select";
-import { MdArrowCircleLeft, MdArrowCircleRight } from "react-icons/md"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [pathname, setPathname] = useState<string>("Dashboard");
   const [screenSize, setScreenSize] = useState<number | string>(300)
-
 
   const handleScreenSize = () => {
       let teste = showMenu === false ? true : false
@@ -49,7 +47,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <>
       <header className="header-admin">
         <Link className="brand" href="/">
-          <Image src={logBrand} alt="Logo banner" width={130} height={130} />
+          <Image src={logBrand} alt="Logo banner" width={150} height={150} />
         </Link>
 
         <span className="navbar" onClick={handleScreenSize}>
@@ -126,6 +124,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <AdminTemplate>
                 {children}
               </AdminTemplate>
+            </div>
+            <div className="pagination">
+              <ul className="pagination-list">
+                <li className="pagination-item active">1</li>
+                <li className="pagination-item">2</li>
+                <li className="pagination-item">3</li>
+              </ul>
             </div>
             <footer className="footer">
               <p>&copy;2024 - Vamos Comemorar</p>

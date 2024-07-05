@@ -3,6 +3,7 @@
 
 .header-admin {
   @include mixins.header(60px, 2rem 1.5rem);
+  height: 60px;
 }
 
 .navbar-and-brand {
@@ -54,7 +55,7 @@
 
 .aside {
   height: 100%;
-  width: 230px;
+  width: 260px;
   background-color: variables.$bg-primary-color-blue;
 }
 
@@ -162,6 +163,33 @@
 .dashboard-item .users .users-icon,
 .dashboard-item .users .place-icon {
   font-size: 1.4rem;
+}
+
+/* Paginação */ 
+.pagination,
+.pagination .pagination-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem 0;
+}
+
+.pagination .pagination-list .pagination-item {
+  width: 40px;
+  height: 40px;
+  background-color: variables.$bg-white;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pagination .pagination-list .pagination-item.active {
+  background-color: variables.$bg-secondary-color-blue;
+  color: variables.$text-white;
 }
 
 /* Footer */ 
