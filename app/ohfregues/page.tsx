@@ -9,6 +9,7 @@ import imgBanner from "@/app/assets/oh-fregues.jpg";
 import "react-multi-carousel/lib/styles.css";
 import styles from "./ohfregues.module.scss";
 import Programacao from "../components/programacao/programacao";
+import Profile from "../components/profile/profile"; // Certifique-se de que o caminho está correto
 
 import newImg1 from "@/app/assets/ohfregues/ambiente-1.jpg";
 import newImg2 from "@/app/assets/ohfregues/ambiente-2.jpg";
@@ -32,16 +33,22 @@ import icon3 from "@/app/assets/icones/estacionamento.png";
 import icon4 from "@/app/assets/icones/18.png";
 import icon5 from "@/app/assets/icones/mesa.png";
 
+import Modal from 'react-modal';
+
 const Ohfregues = () => {
   const [showDescription, setShowDescription] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [expandedImage, setExpandedImage] = useState(null);
 
   const toggleContent = (content) => {
-    if (content === "sobre") {
-      setShowDescription(true);
-    } else if (content === "eventos") {
-      setShowDescription(false);
-    }
+    setShowDescription(content === "sobre");
   };
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+
+  const openImage = (img) => setExpandedImage(img);
+  const closeImage = () => setExpandedImage(null);
 
   return (
     <>
@@ -91,29 +98,30 @@ const Ohfregues = () => {
           <div className={styles.rightColumn}>
             <div className={styles.iconContainer}>
               <div className={styles.iconItem}>
-                <Image src={icon1} width={40} height={40} />
+                <Image src={icon1} width={40} height={40} alt="Área aberta" />
                 <p className={styles.iconTitle}>Área aberta</p>
               </div>
               <div className={styles.iconItem}>
-                <Image src={icon2} width={40} height={40} />
+                <Image src={icon2} width={40} height={40} alt="Acessível" />
                 <p className={styles.iconTitle}>Acessível</p>
               </div>
               <div className={styles.iconItem}>
-                <Image src={icon3} width={40} height={40} />
+                <Image src={icon3} width={40} height={40} alt="Estacionamento" />
                 <p className={styles.iconTitle}>Estacionamento</p>
               </div>
               <div className={styles.iconItem}>
-                <Image src={icon4} width={40} height={40} />
+                <Image src={icon4} width={40} height={40} alt="+18" />
                 <p className={styles.iconTitle}>+18</p>
               </div>
               <div className={styles.iconItem}>
-                <Image src={icon5} width={40} height={40} />
+                <Image src={icon5} width={40} height={40} alt="Mesas" />
                 <p className={styles.iconTitle}>Mesas</p>
               </div>
             </div>
           </div>
         </div>
-        <button className={styles.reserveButton}>Fazer reserva</button>
+        <button onClick={openModal} className={styles.reserveButton}>Fazer reserva</button>
+        <Profile isOpen={modalIsOpen} onRequestClose={closeModal} />
       </div>
 
       <p className={styles.barDescription}>
@@ -140,14 +148,17 @@ const Ohfregues = () => {
             <Section
               title="Ambientes"
               images={[newImg1, newImg2, newImg3, newImg4]}
+              openImage={openImage}
             />
             <Section
               title="Gastronomia"
               images={[gastro1, gastro2, gastro3, gastro4]}
+              openImage={openImage}
             />
             <Section
               title="Bebidas"
               images={[bebida1, bebida2, bebida3, bebida4]}
+              openImage={openImage}
             />
           </>
         )}
@@ -161,20 +172,45 @@ const Ohfregues = () => {
           style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"
+          title="Google Maps"
         ></iframe>
       </div>
+
+      {expandedImage && (
+        <Modal
+          isOpen={!!expandedImage}
+          onRequestClose={closeImage}
+          className={styles.modal}
+          overlayClassName={styles.modalOverlay}
+        >
+          <div className={styles.modalImageContainer}>
+            <Image
+              src={expandedImage}
+              alt="Expanded"
+              className={styles.modalImage}
+              layout="intrinsic"
+              width={800}
+              height={600}
+            />
+          </div>
+        </Modal>
+      )}
 
       <Footer />
     </>
   );
 };
 
-const Section = ({ title, images }) => (
+const Section = ({ title, images, openImage }) => (
   <div className={styles.section}>
     <h2 className={styles.sectionTitle}>{title}</h2>
     <div className={styles.images}>
       {images.map((img, index) => (
-        <div key={index} className={styles.imageContainer}>
+        <div
+          key={index}
+          className={styles.imageContainer}
+          onClick={() => openImage(img)}
+        >
           <Image src={img} alt={title} className={styles.image} />
         </div>
       ))}
