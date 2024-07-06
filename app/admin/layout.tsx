@@ -46,14 +46,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <>
       <header className="header-admin">
-        <Link className="brand" href="/">
-          <Image src={logBrand} alt="Logo banner" width={150} height={150} />
-        </Link>
+        <div>
+          <Link className="brand" href="/">
+            <Image src={logBrand} alt="Logo banner" width={150} height={150} />
+          </Link>
 
-        <span className="navbar" onClick={handleScreenSize}>
-          <MdMenu className="navbar-menu-icon" />
-        </span>
-
+          <span className="navbar" onClick={handleScreenSize}>
+            <MdMenu className="navbar-menu-icon" />
+          </span>
+        </div>
         <span className="header-avatar">
           {/* <Image src="" alt="Foto do administrador" width={100} height={100} /> */}
           <MdPerson className="avatar-icon" />
@@ -124,13 +125,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <AdminTemplate>
                 {children}
               </AdminTemplate>
-            </div>
-            <div className="pagination">
-              <ul className="pagination-list">
-                <li className="pagination-item active">1</li>
-                <li className="pagination-item">2</li>
-                <li className="pagination-item">3</li>
-              </ul>
             </div>
             <footer className="footer">
               <p>&copy;2024 - Vamos Comemorar</p>

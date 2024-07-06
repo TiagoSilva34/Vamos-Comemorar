@@ -34,7 +34,7 @@ export default function Users() {
             placeholder="Nome, E-mail ou Cpf (Apenas Números)"
           />
           <Select onChange={() => {}} className="search-select">
-            <option value=""></option>
+            <option value="">Selecione tipo de busca</option>
           </Select>
         </div>
       </div>
@@ -99,11 +99,51 @@ export default function Users() {
                     </Button>
                   </div>
                 </li>
+                <li key={user.name}>
+                  <span>{user.name}</span>
+                  <span className="email">{user.email}</span>
+                  <span>{user.telefone}</span>
+                  <span>{user.status}</span>
+                  <span>{user.createAt}</span>
+                  <div className="grid-list-btn-actions">
+                    <Button type="button">
+                      <MdEdit />
+                    </Button>
+                    <Button type="button">
+                      <MdDelete />
+                    </Button>
+                  </div>
+                </li>
+                <li key={user.name}>
+                  <span>{user.name}</span>
+                  <span className="email">{user.email}</span>
+                  <span>{user.telefone}</span>
+                  <span>{user.status}</span>
+                  <span>{user.createAt}</span>
+                  <div className="grid-list-btn-actions">
+                    <Button type="button">
+                      <MdEdit />
+                    </Button>
+                    <Button type="button">
+                      <MdDelete />
+                    </Button>
+                  </div>
+                </li>
+             
               </>
             ))}
           </ul>
         </div>
-        <div></div>
+        <div className="pagination">
+            <ul className="pagination-list">
+              <li className="pagination-item active">1</li>
+              <li className="pagination-item">2</li>
+              <li className="pagination-item">3</li>
+            </ul>
+            <Select className="items-per-page">
+                <option value="">10</option>
+            </Select>
+        </div>
       </Grid>
     </div>
   );
