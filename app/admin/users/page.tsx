@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/app/components/button/button";
-import { MdAdd, MdDelete, MdRefresh } from "react-icons/md";
+import { MdAdd, MdArrowLeft, MdArrowRight, MdDelete, MdRefresh } from "react-icons/md";
 import Grid from "@/app/components/grid/grid";
 import Select from "@/app/components/select/select";
 import { users } from "@/app/repository/filterData";
@@ -136,9 +136,11 @@ export default function Users() {
         </div>
         <div className="pagination">
             <ul className="pagination-list">
+              <li><MdArrowLeft className="arrowLeft"/></li>
               <li className="pagination-item active">1</li>
               <li className="pagination-item">2</li>
               <li className="pagination-item">3</li>
+              <li><MdArrowRight className="arrowRight" /></li>
             </ul>
             <Select className="items-per-page">
                 <option value="">10</option>
