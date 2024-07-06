@@ -12,18 +12,18 @@ import {
   MdPlace,
   MdTimer,
   MdCardGiftcard,
-  MdArrowCircleLeft, 
-  MdArrowCircleRight
 } from "react-icons/md";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import AdminTemplate from "./template";
+import { usePathname } from "next/navigation";
 import "./styles.scss";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [pathname, setPathname] = useState<string>("Dashboard");
   const [screenSize, setScreenSize] = useState<number | string>(300)
+  const pathanme = usePathname()
 
   const handleScreenSize = () => {
       let teste = showMenu === false ? true : false
@@ -41,6 +41,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     }
     
     window.onresize = reportWindowSize;
+  }, [screenSize])
+
+  useEffect(() => {
+    let pos = pathanme.lastIndexOf('/')
+
+    setPathname(pathanme.slice(pos + 1, pathanme.length))
   }, [screenSize])
 
   return (
@@ -80,14 +86,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <MdPerson3 className="person-icon"/>
                     <Link
                       href="/admin/users"
-                      onClick={() => setPathname("usuários")}
+                      onClick={() => setPathname("users")}
                     >
                       Usuários
                     </Link>
                   </li>
                   <li>
                     <MdFactory className="factory-icon"/>
-                    <Link href="/admin/factory">Empresa</Link>
+                    <Link href="/admin/factories" onClick={() => setPathname("factories")}>Empresa</Link>
                   </li>
                   <li>
                     <MdSpaceBar className="commodies-icon"/>
