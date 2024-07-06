@@ -17,6 +17,17 @@ export const users = [
   },
 ];
 
+export const factories = [
+  {
+    avatar: 'VC',
+    name: "User 01",
+    email: "user@hotmail.com",
+    telefone: "2199999999",
+    status: "pendente",
+    createAt: "16/06/2024",
+  },
+];
+
 export const infos = {
   users: 405,
   places: 10,
