@@ -97,7 +97,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   </li>
                   <li>
                     <MdSpaceBar className="commodies-icon"/>
-                    <Link href="/admin/commodities">Commodities</Link>
+                    <Link href="/admin/commodities" onClick={() => setPathname("commodities")}>Commodities</Link>
                   </li>
                 </div>
 
