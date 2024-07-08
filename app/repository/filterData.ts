@@ -7,6 +7,13 @@ export const filterData = [
   "Ações",
 ];
 
+export const infos = {
+  users: 405,
+  places: 10,
+  reservation: 0,
+  points: 0,
+};
+
 export const users = [
   {
     name: "User 01",
@@ -19,7 +26,7 @@ export const users = [
 
 export const factories = [
   {
-    avatar: 'VC',
+    avatar: "VC",
     name: "User 01",
     email: "user@hotmail.com",
     telefone: "2199999999",
@@ -28,9 +35,11 @@ export const factories = [
   },
 ];
 
-export const infos = {
-  users: 405,
-  places: 10,
-  reservation: 0,
-  points: 0,
-};
+export const commodities = [
+  {
+    icon: "VC",
+    colour: "User 01",
+    name: "user@hotmail.com",
+    description: "2199999999",
+  },
+];
