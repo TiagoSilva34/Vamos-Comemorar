@@ -1,12 +1,12 @@
 "use client";
 import Button from "@/app/components/button/button";
-import { MdAdd, MdDelete, MdRefresh, MdEdit, MdArrowLeft, MdArrowRight, MdCarCrash } from "react-icons/md";
+import { MdAdd, MdDelete, MdRefresh, MdEdit, MdArrowLeft, MdArrowRight } from "react-icons/md";
 import Grid from "@/app/components/grid/grid";
 import Select from "@/app/components/select/select";
-import { commodities } from "@/app/repository/filterData";
+import { tables } from "@/app/repository/filterData";
 import "./styles.scss";
 
-export default function Commodities() {
+export default function Tables() {
   return (
     <div className="main-content">
       <div className="main-content-actions">
@@ -28,49 +28,24 @@ export default function Commodities() {
         <div>
           <ul className="grid-header-items">
             <li>
-              <span>Ícone</span>
-              <span>Cor</span>
+              <span>Avatar</span>
               <span>Nome</span>
-              <span>Descrição</span>
+              <span>Preço</span>
+              <span>Externa</span>
+              <span>Local</span>
               <span className="grid-header-actions">Ações</span>
             </li>
           </ul>
           <ul className="grid-list-items">
-            {commodities.map((commodity) => (
+            {tables.map((table) => (
               <>
-                <li key={commodity.name}>
-                  <span>{commodity.icon}</span>
-                  <span >{commodity.colour}</span>
-                  <span>{commodity.name}</span>
-                  <span>{commodity.description}</span>
-                  <div className="grid-list-btn-actions">
-                    <Button type="button">
-                      <MdEdit />
-                    </Button>
-                    <Button type="button">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </li>
-                <li key={commodity.name}>
-                  <span>{commodity.icon}</span>
-                  <span >{commodity.colour}</span>
-                  <span>{commodity.name}</span>
-                  <span>{commodity.description}</span>
-                  <div className="grid-list-btn-actions">
-                    <Button type="button">
-                      <MdEdit />
-                    </Button>
-                    <Button type="button">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </li>
-                <li key={commodity.name}>
-                  <span>{commodity.icon}</span>
-                  <span >{commodity.colour}</span>
-                  <span>{commodity.name}</span>
-                  <span>{commodity.description}</span>
+                <li key={table.name}>
+                  <span><span className="avatar">VC</span></span>
+                  <span>{table.avatar}</span>
+                  <span >{table.name}</span>
+                  <span>{table.preço}</span>
+                  <span>{table.externa}</span>
+                  <span>{table.local}</span>
                   <div className="grid-list-btn-actions">
                     <Button type="button">
                       <MdEdit />

@@ -9,20 +9,46 @@ import Link from "next/link";
 import Input from "../components/input/input";
 import Button from "../components/button/button";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { validateEmail } from "../utils/validations";
 import "./styles.scss";
+import { login, validateToken } from "../services/app.servcies";
+import { ILogin } from "./interface";
+import { useRouter } from "next/navigation";
+import { access } from "fs";
 
 export default function Login() {
   const [show, setShow] = useState<boolean>(false);
-  const [emailCpf, setEmailCpf] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [isValid, setIsValid] = useState<any>(undefined)
 
-  const validInputs = useMemo(() => {
-    // memorization para validação dos campos de email / cpf e senha
-  }, []);
+  const router = useRouter()
 
-  const handleLogin = () => {};
+  const onClickLogin = () => {
+    debugger
+    const creds: ILogin = {
+      access: email,
+      password: password
+    }
+
+    if (creds.access.length && creds.password.length) 
+    login(creds).then((response) => {
+        if (creds.access === 'Admin@vamoscomemorar.com.br' && creds.password === 'Admin@123') {
+          localStorage.setItem('authenticated', JSON.stringify(response))
+          validateToken(response.token)
+          router.push('/admin')
+        }
+    })
+  }
+
+  const emailIsValid = useCallback((value: string) => {
+    setEmail(value)
+
+    if (validateEmail(email)) setIsValid(true)
+    else setIsValid(false)
+  }, [email])
 
   return (
     <div className="container">
@@ -44,15 +70,15 @@ export default function Login() {
             <div className="input-container">
               <Input
                 placeholder="Email / CPF"
-                type="text"
+                type="email"
                 id="cpf"
                 className="cpf"
-                onChange={setEmailCpf}
-                value={emailCpf}
+                onChange={(event: any) => emailIsValid(event)}
+                value={email}
               />
               <Input
                 placeholder="Senha"
-                type="password"
+                type="text"
                 id="password"
                 className="password"
                 onChange={setPassword}
@@ -66,7 +92,7 @@ export default function Login() {
               </Link>
             </div>
 
-            <Button type="submit" className="btn-login" onClick={handleLogin}>
+            <Button type="button" className="btn-login" onClick={onClickLogin}>
               ENTRAR
             </Button>
             <div className="title">

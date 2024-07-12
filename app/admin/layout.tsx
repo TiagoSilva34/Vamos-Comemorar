@@ -86,18 +86,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <MdPerson3 className="person-icon"/>
                     <Link
                       href="/admin/users"
-                      onClick={() => setPathname("users")}
+                      onClick={() => setPathname("Usuários")}
                     >
                       Usuários
                     </Link>
                   </li>
                   <li>
                     <MdFactory className="factory-icon"/>
-                    <Link href="/admin/factories" onClick={() => setPathname("factories")}>Empresa</Link>
+                    <Link href="/admin/factories" onClick={() => setPathname("Empresas")}>Empresa</Link>
                   </li>
                   <li>
                     <MdSpaceBar className="commodies-icon"/>
-                    <Link href="/admin/commodities" onClick={() => setPathname("commodities")}>Commodities</Link>
+                    <Link href="/admin/commodities" onClick={() => setPathname("Commodities")}>Commodities</Link>
                   </li>
                 </div>
 
@@ -105,19 +105,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   <h2>Lugares</h2>
                   <li>
                     <MdPlace className="places-icon"/>
-                    <Link href="/places">Lugares</Link>
+                    <Link href="/admin/places" onClick={() => setPathname("Lugares")}>Lugares</Link>
                   </li>
                   <li>
                     <MdTableBar className="tables-icon"/>
-                    <Link href="/tables">Mesas</Link>
+                    <Link href="/admin/tables" onClick={() => setPathname("Mesas")}>Mesas</Link>
                   </li>
                   <li>
                     <MdCardGiftcard className="gift-icon"/>
-                    <Link href="/gifts">Brindes</Link>
+                    <Link href="/admin/gifts" onClick={() => setPathname("Brindes")}>Brindes</Link>
                   </li>
                   <li>
                     <MdTimer className="timer-icon"/>
-                    <Link href="/days">Dias de funcionamento</Link>
+                    <Link href="/admin/days" onClick={() => setPathname("Dia de func")}>Dias de funcionamento</Link>
                   </li>
                 </div>
               </ul>

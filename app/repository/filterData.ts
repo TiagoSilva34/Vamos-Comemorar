@@ -43,3 +43,24 @@ export const commodities = [
     description: "2199999999",
   },
 ];
+
+export const places = [
+  {
+    logo: "VC",
+    v: "User 01",
+    name: "teste",
+    email: "user@hotmail.com",
+    ranking: "2199999999",
+    status: false
+  },
+];
+
+export const tables = [
+  {
+    avatar: "VC",
+    name: "User 01",
+    preço: "teste",
+    externa: "user@hotmail.com",
+    local: "2199999999",
+  },
+];

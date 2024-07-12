@@ -3,6 +3,7 @@ import { MdPerson, MdPlace, MdShoppingCart, MdNumbers } from "react-icons/md";
 import { infos } from "../repository/filterData";
 
 export default function Dashboard() {
+
   return (
     <div className="container-dashboard">
       <div className="dashboard-item">
